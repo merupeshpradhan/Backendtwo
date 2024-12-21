@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 10px;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      input {
+        margin-bottom: 12px;
+        /* background: black; */
+        color: black;
+        font-size: 20px;
+        font-weight: 400;
+        border: none;
+        padding: 5px;
+        border-radius: 10px;
+      }
+      .mainDiv {
+        background: rgb(255, 242, 0);
+        padding: 0px 0px;
+        margin: 4px;
+        border-radius: 13px;
+        width: 167px;
+      }
+      .list {
+        background-color: rgb(12, 215, 120);
+        margin-top: 30px;
+      }
+      h1 {
+        text-align: center;
+        padding: 0;
+      }
+      .parent {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+      .inputs {
+        background: rgb(27, 104, 193);
+        padding: 9px;
+        text-align: center;
+        width: 293px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        border-radius: 10px;
+      }
+      #show {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-left: 20px;
+      }
+      #btn {
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="inputs">
+        <h1>Form</h1>
+        <input type="text" id="name" value="" placeholder="Name" /><br />
+        <input
+          type="number"
+          id="roll"
+          value=""
+          placeholder="Roll Number"
+        /><br />
+        <input type="text" id="sic" value="" placeholder="SIC" /><br />
+        <input
+          type="number"
+          id="phn"
+          value=""
+          placeholder="Phone Number"
+        /><br />
+        <button
+          onclick="check()"
+          style="background: white; padding: 10px 34px; border-radius: 10px"
+        >
+          Submit
+        </button>
+      </div>
+      <div class="list">
+        <h1>Student Detials</h1>
+        <div id="show"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let obj = [];
+    function check() {
+      let val1 = document.getElementById("name").value;
+      let val2 = document.getElementById("roll").value;
+      let val3 = document.getElementById("sic").value;
+      let val4 = document.getElementById("phn").value;
+
+      if (val1 == "" || val2 == "" || val3 == "" || val4 == "") {
+        alert("input is empty");
+      } else {
+        alert("data inputed succesfully");
+        var temp = {
+          name: val1,
+          roll: val2,
+          sic: val3,
+          phn: val4,
+        };
+        obj.push(temp);
+      }
+      console.log(obj);
+
+      var maindiv = document.getElementById("show");
+      maindiv.innerHTML = "";
+
+      for (var i = 0; i < obj.length; i++) {
+        let div = document.createElement("div");
+        div.setAttribute("class", "mainDiv");
+        let name = document.createElement("p");
+        name.style.borderRadius = "10px";
+        let roll = document.createElement("p");
+        let sic = document.createElement("p");
+        let phn = document.createElement("p");
+        let btn = document.createElement("button");
+        btn.innerText = "Delete";
+        btn.style.margin="0px 12px 11px"
+        btn.style.padding="3px"
+        btn.style.border="none"
+        btn.style.borderRadius="4px"
+        btn.style.boxShadow ="rgba(0,0,0,0.19);"
+
+        btn.addEventListener("click", () => {
+          del(obj[i]);
+        });
+        name.innerHTML = obj[i].name;
+        roll.innerHTML = obj[i].roll;
+        sic.innerHTML = obj[i].sic;
+        phn.innerHTML = obj[i].phn;
+
+        div.append(name, roll, sic, phn, btn);
+        maindiv.append(div);
+      }
+    }
+    function del(obj) {
+      console.log(name.h1);
+    }
+  </script>
+</html>

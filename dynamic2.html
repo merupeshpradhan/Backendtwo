@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+</body>
+<script>
+    let body = document.querySelector("body");
+    let Div = document.createElement("div");
+    Div.setAttribute("id", "Parent");
+    Div.style.background="red"
+    Div.style.width="600px"
+    Div.style.height="600px"
+    // Div.style.display="flex"
+    // Div.style.display="flex"
+    // Div.style.textAlign="center"
+
+
+    let name = document.createElement("input");
+    name.setAttribute("type", "text");
+    name.setAttribute("id", "name");
+
+    let roll = document.createElement("input");
+    roll.setAttribute("type", "number");
+    roll.setAttribute("id", "roll");
+
+    let sic = document.createElement("input");
+    sic.setAttribute("type", "text");
+    sic.setAttribute("id", "sic");
+
+    let phn = document.createElement("input");
+    phn.setAttribute("type", "number");
+    phn.setAttribute("id", "phn");
+
+    let btn = document.createElement("button");
+    btn.setAttribute("id", "btn");
+
+    btn.innerText = "submit"
+    btn.addEventListener("click", check);
+
+    var maindiv = document.createElement("div");
+    maindiv.setAttribute=("id","div2");
+    // maindiv.style.background="green"
+    // maindiv.style.width="400px"
+    // maindiv.style.height="400px"
+
+    Div.append(name,roll,sic,phn,btn,maindiv);
+    body.append(Div);
+
+    let obj = [];
+    function check()
+    {
+      let val1 = document.getElementById("name").value;
+      let val2 = document.getElementById("roll").value;
+      let val3 = document.getElementById("sic").value;
+      let val4 = document.getElementById("phn").value;
+
+      if (val1 == "" || val2 == "" || val3 == "" || val4 == "") {
+        alert("input is empty");
+      } else {
+        alert("data inputed succesfully");
+        var temp = {
+          name: val1,
+          roll: val2,
+          sic: val3,
+          phn: val4,
+        };
+        obj.push(temp);
+      }
+      console.log(obj);
+
+      var mdiv = document.getElementById("div2");
+      mdiv.setAttribute=("class","mDiv");
+      mdiv.innerHTML = "";
+
+      for (var i = 0; i < obj.length; i++) {
+        let div = document.createElement("div");
+        div.setAttribute("id", "SubDiv");
+        let name = document.createElement("h1");
+        let roll = document.createElement("h1");
+        let sic = document.createElement("h1");
+        let phn = document.createElement("h1");
+        let btn = document.createElement("button");
+        btn.innerText = "Delete";
+        btn.addEventListener("click", () => {
+          del(obj[i]);
+        });
+        name.innerHTML = obj[i].name;
+        roll.innerHTML = obj[i].roll;
+        sic.innerHTML = obj[i].sic;
+        phn.innerHTML = obj[i].phn;
+        div.append(name, roll, sic, phn, btn);
+        mdiv.append(div);
+      }
+    }
+</script>
+</html>
